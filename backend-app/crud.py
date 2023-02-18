@@ -40,6 +40,7 @@ def create_user(db: Session, user: schemas.UserCreate):
 
 def create_job(db: Session, job: schemas.JobCreate):
     job_posted=date.today()
+    companyid = db.query(models.Company.id).filter(models.Company.name==job.from_)
     db_job = models.Job(title=job.title,
                         dateposted=job.dateposted,
                         from_=job.from_, #company name,
@@ -48,7 +49,8 @@ def create_job(db: Session, job: schemas.JobCreate):
                         qualifications=job.qualifications,
                         qkeyword=job.qkeyword,
                         responsibilities=job.responsibilities,
-                        rkeyword=job.rkeyword
+                        rkeyword=job.rkeyword,
+                        companyid=companyid
                         )
     db.add(db_job)
     db.commit()
