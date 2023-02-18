@@ -50,6 +50,8 @@ def create_job(db: Session, job: schemas.JobCreate):
                         qkeyword=job.qkeyword,
                         responsibilities=job.responsibilities,
                         rkeyword=job.rkeyword,
+                        applylink=job.applylink
+                        thumbnail=job.thumbnail
                         companyid=companyid
                         )
     db.add(db_job)

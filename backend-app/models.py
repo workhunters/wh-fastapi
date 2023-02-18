@@ -43,6 +43,8 @@ class Job(Base):
     qkeyword=Column(String)
     responsibilities=Column(String)
     rkeyword=Column(String)
+    applylink=Column(String)
+    thumbnail=Column(String)
     companyid=Column(Integer,ForeignKey("companies.id"))
     company=relationship("Company", back_populates="jobs")
 
