@@ -29,7 +29,45 @@ class UserCreate(UserBase):
 class User(UserBase):
     id: int
     is_active: bool
+    class Config:
+        orm_mode=True
 
+
+class JobBase(BaseModel):
+    title: str
+    dateposted: Optional[str]
+
+class JobCreate(JobBase):
+    location: str
+    from_:str
+    benefits: str
+    bkeyword: str
+    qualifications: str
+    qkeyword: str
+    responsibilities: str
+    rkeyword: str
+
+class Job(JobBase):
+    id: int
+    companyid: int
+    class Config:
+        orm_mode=True
+
+class CompanyBase(BaseModel):
+    name: str
+
+class CompanyCreate(CompanyBase):
+    name: str
+    class Config:
+        orm_mode=True
+
+class CompanyShow(CompanyBase):
+    name: str
+    class Config:
+        orm_mode=True
+
+class Company(CompanyBase):
+    id: int
     class Config:
         orm_mode=True
 

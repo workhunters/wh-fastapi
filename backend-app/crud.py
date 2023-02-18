@@ -1,5 +1,7 @@
 from sqlalchemy.orm import Session
 
+from datetime import date
+
 import models, schemas
 
 def get_user_by_email(db: Session, email: str):
@@ -35,3 +37,34 @@ def create_user(db: Session, user: schemas.UserCreate):
     db.commit()
     db.refresh(db_user)
     return db_user
+
+def create_job(db: Session, job: schemas.JobCreate):
+    job_posted=date.today()
+    db_job = models.Job(title=job.title,
+                        dateposted=job.dateposted,
+                        from_=job.from_, #company name,
+                        benefits=job.benefits,
+                        bkeyword=job.bkeyword,
+                        qualifications=job.qualifications,
+                        qkeyword=job.qkeyword,
+                        responsibilities=job.responsibilities,
+                        rkeyword=job.rkeyword
+                        )
+    db.add(db_job)
+    db.commit()
+    db.refresh(db_job)
+    return db_job
+
+def create_company(db: Session, company: schemas.CompanyCreate):
+    db_company = models.Company(name=company.name,
+                                )
+    db.add(db_company)
+    db.commit()
+    db.refresh(db_company)
+    return db_company
+
+def get_total_jobs(db: Session):
+    return db.query(models.Job).all()
+
+def get_total_companies(db: Session):
+    return db.query(models.Company).all()

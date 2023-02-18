@@ -35,6 +35,7 @@ class Job(Base):
     id=Column(Integer, primary_key=True, index=True)
     title=Column(String)
     location=Column(String)
+    dateposted=Column(String)
     from_=Column(String)
     benefits=Column(String)
     bkeyword=Column(String)
