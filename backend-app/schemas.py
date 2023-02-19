@@ -46,6 +46,8 @@ class JobCreate(JobBase):
     qkeyword: str
     responsibilities: str
     rkeyword: str
+    thumbnail: str
+    applylink: str
 
 class Job(JobBase):
     id: int
