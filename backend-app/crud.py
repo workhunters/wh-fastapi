@@ -44,6 +44,7 @@ def create_job(db: Session, job: schemas.JobCreate):
     db_job = models.Job(title=job.title,
                         dateposted=job.dateposted,
                         from_=job.from_, #company name,
+                        location=job.location,
                         benefits=job.benefits,
                         bkeyword=job.bkeyword,
                         qualifications=job.qualifications,
