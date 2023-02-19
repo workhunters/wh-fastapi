@@ -43,6 +43,7 @@ class Job(Base):
     qkeyword=Column(String)
     responsibilities=Column(String)
     rkeyword=Column(String)
+    description=Column(String)
     applylink=Column(String)
     thumbnail=Column(String)
     companyid=Column(Integer,ForeignKey("companies.id"))
